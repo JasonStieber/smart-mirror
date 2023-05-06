@@ -9,6 +9,8 @@ __pycache__/
 
 # Secrets
 app/config/secret_keys.py
+templates/raspberryPi_setup.txt
+app/config/google_client_secret.json
 
 # Log and temporary files
 *.log

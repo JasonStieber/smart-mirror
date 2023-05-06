@@ -12,7 +12,7 @@ def query_gpt():
     synthesize_speech(response)
 
 # Function to listen for a list of command words using the default microphone
-def listen_for_command_word(command_words):
+def listen_for_command_word(command_words: list[str])-> str:
     recognizer = sr.Recognizer()
     with sr.Microphone() as source:
         while True:
@@ -31,9 +31,6 @@ def listen_for_command_word(command_words):
             except sr.UnknownValueError:
                 # Ignore unrecognized speech
                 pass
-            except sr.RequestError as e:
-                # Handle errors
-                print(f"Error: {e}")
-
+            
 # Test the "show tasks" command
 #handle_command("show tasks")

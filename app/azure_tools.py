@@ -4,7 +4,7 @@ from config.settings import SPEECH_REGION
 
 PROMPT = "Please speak this phrase: Batman is the night."
 
-def recognize_from_microphone():
+def recognize_from_microphone() -> str:
     # This example requires environment variables named "SPEECH_KEY" and "SPEECH_REGION"
     speech_config = speechsdk.SpeechConfig(subscription=SPEECH_KEY, region=SPEECH_REGION,speech_recognition_language="en-US")
     audio_config = speechsdk.audio.AudioConfig(use_default_microphone=True)
@@ -28,7 +28,7 @@ def recognize_from_microphone():
 
 
 
-def synthesize_speech(text):
+def synthesize_speech(text: str):
     # This example requires environment variables named "SPEECH_KEY" and "SPEECH_REGION"
     speech_config = speechsdk.SpeechConfig(subscription=SPEECH_KEY, region=SPEECH_REGION)
     audio_config = speechsdk.audio.AudioOutputConfig(use_default_speaker=True)
