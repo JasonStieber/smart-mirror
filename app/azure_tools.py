@@ -1,5 +1,6 @@
 import azure.cognitiveservices.speech as speechsdk
-from secret_keys import SPEECH_KEY, SPEECH_REGION
+from config.secret_keys import SPEECH_KEY
+from config.settings import SPEECH_REGION
 
 PROMPT = "Please speak this phrase: Batman is the night."
 

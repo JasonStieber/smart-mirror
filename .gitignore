@@ -8,7 +8,7 @@ __pycache__/
 *.pyd
 
 # Secrets
-app/secret_keys.py
+app/config/secret_keys.py
 
 # Log and temporary files
 *.log

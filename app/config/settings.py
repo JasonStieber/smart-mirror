@@ -1,0 +1,2 @@
+SPEECH_REGION = "westus"
+TENANT_ID = "8d838786-07a3-44d7-a683-c857de51b34d"
