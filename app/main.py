@@ -9,6 +9,8 @@ from ms_todo import get_tasks_from_todo_list
 COMMAND_PHRASES = ["Jarvis", "Show Tasks", "Add Task"]
 
 def main():
+    # -----TODO----- create an on word to make microsoft azure text to speech wake up on work should be 
+    # -----TODO----- on word should use python speech_recognition
     # Continuously listen for the trigger word
     while True:
         try: 
