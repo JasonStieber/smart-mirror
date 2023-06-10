@@ -10,12 +10,12 @@ from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 
 # If modifying these scopes, delete the file token.json.
-SCOPES = ['https://www.googleapis.com/auth/calendar.readonly']
+SCOPES = ['https://www.googleapis.com/auth/tasks.readonly','https://www.googleapis.com/auth/calendar.readonly']
 
 
 def main():
-    """Shows basic usage of the Google Calendar API.
-    Prints the start and name of the next 10 events on the user's calendar.
+    """Shows basic usage of the Tasks API.
+    Prints the title and ID of the first 10 task lists.
     """
     creds = None
     # The file token.json stores the user's access and refresh tokens, and is
@@ -29,11 +29,29 @@ def main():
             creds.refresh(Request())
         else:
             flow = InstalledAppFlow.from_client_secrets_file(
-                'credentials.json', SCOPES)
+                '/home/jason/Documents/projects/smart_mirror/app/config/credentials.json', SCOPES)
             creds = flow.run_local_server(port=0)
         # Save the credentials for the next run
         with open('token.json', 'w') as token:
             token.write(creds.to_json())
+
+    try:
+        service = build('tasks', 'v1', credentials=creds)
+
+        # Call the Tasks API
+        results = service.tasklists().list(maxResults=10).execute()
+        items = results.get('items', [])
+
+        if not items:
+            print('No task lists found.')
+            return
+
+        print('Task lists:')
+        for item in items:
+            print(u'{0} ({1})'.format(item['title'], item['id']))
+    except HttpError as err:
+        print(err)
+    
 
     try:
         service = build('calendar', 'v3', credentials=creds)
@@ -57,6 +75,7 @@ def main():
 
     except HttpError as error:
         print('An error occurred: %s' % error)
+
 
 
 if __name__ == '__main__':
